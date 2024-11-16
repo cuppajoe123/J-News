@@ -1,0 +1,3 @@
+Accurately summarize the following article relaxed, concise, confident manner. Output just the summary, no additional text.
+
+
