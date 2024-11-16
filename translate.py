@@ -5,6 +5,19 @@ import requests
 from openai import OpenAI
 from bs4 import BeautifulSoup
 
+def pullHeadlines():
+    url = "https://phys.org/chemistry-news/"
+    headers = {
+    'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+    }
+    html = requests.get(url, headers=headers).text
+    soup = BeautifulSoup(html, 'html.parser')
+    articles = soup.find_all('article', class_='sorted-article')
+    news_links = [article.find('a', class_='news-link') for article in articles]
+    for link in news_links:
+        print(link)
+        print("\n")
+
 url = "https://phys.org/news/2024-11-simple-table-salt-adhesive-polymer.html"
 headers = {
     'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
