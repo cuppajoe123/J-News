@@ -1,3 +1,2 @@
-Accurately summarize the following article relaxed, concise, confident manner. Output just the summary, no additional text.
-
+Read this anticle and summarize it in a relaxed, not too technical but not too generalized, calm, smart, and concise manner. Be sure to emphasize what makes this article important.
 
