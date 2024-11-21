@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Summaries</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .summary {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Article Summaries</h1>
+    <div id="summaries-container"></div>
+
+    <script>
+        // Function to fetch and display summaries
+        async function loadSummaries() {
+            try {
+                // Fetch the summaries from the text file
+                const response = await fetch('summaries.txt');
+                const text = await response.text();
+
+                // Split text by newlines into an array
+                const summaries = text.split('\n').filter(line => line.trim() !== '');
+
+                // Get the container element
+                const container = document.getElementById('summaries-container');
+
+                // Add each summary to the container as a paragraph
+                summaries.forEach(summary => {
+                    const p = document.createElement('p');
+                    p.className = 'summary';
+                    p.textContent = summary;
+                    container.appendChild(p);
+                });
+            } catch (error) {
+                console.error('Error loading summaries:', error);
+            }
+        }
+
+        // Load summaries when the page loads
+        window.onload = loadSummaries;
+    </script>
+</body>
+</html>
